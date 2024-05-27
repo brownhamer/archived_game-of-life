@@ -1,10 +1,15 @@
-let language = randint(0, 2)
+let receivedLanguage = 0
+let repeatLanguage = false
 let greetings = ["Hello", "Hallo", "Hola"]
+let language = randint(0, 2)
+radio.setGroup(1)
 radio.onReceivedString(function on_received_string(receivedString: string) {
-    let neighborLanguage = _py.py_array_index(greetings, receivedString)
+    
+    receivedLanguage = _py.py_array_index(greetings, receivedString)
+})
+loops.everyInterval(500, function on_500_interval() {
     
 })
-radio.setGroup(1)
 basic.forever(function on_forever() {
     
 })

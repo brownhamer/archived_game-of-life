@@ -1,27 +1,36 @@
+greetings = ["Hello", "Hallo", "Hola"]
 language = randint(0, 2)
-languageRepeat = False
-greetings = ['Hello', 'Hallo', 'Hola']
+repeatLanguage = False
 
 def on_received_string(receivedString):
-    neighborLanguage = greetings.index(receivedString)
-    if (neighborLanguage == language)
-        languageRepeat = True
-        basic.show_icon(IconNames.HEART)
-    else
-        basic.show_icon(IconNames.NO)
+    global greetings
+    global language
+    receivedLanguage = greetings.index(receivedString)
+    if (receivedLanguage = language)
+        global repeatLanguage
+        repeatLanguage = True
     pass
-radio.on_received_string(on_received_string)
 
-def onEvery_interval():
-    if (not languageRepeat)
+def on_500_interval():
+    global greetings
+    global language
+    global repeatLanguage
+    if (repeatLanguage)
+        pins.analog_write_pin(AnalogPin.P13, 0)
+        pins.analog_write_pin(AnalogPin.P14, 666)
+        repeatLanguague = False
+    else
+        pins.analog_write_pin(AnalogPin.P13, 666)
+        pins.analog_write_pin(AnalogPin.P14, 0)
         language = randint(0, 2)
-
+    basic.show_number(language)
     radio.send_string(greetings[language])
     pass
-loops.every_interval(500, onEvery_interval)
-
-radio.set_group(1)
 
 def on_forever():
     pass
+
+radio.set_group(1)
+radio.on_received_string(on_received_string)
+loops.every_interval(500, on_500_interval)
 basic.forever(on_forever)
