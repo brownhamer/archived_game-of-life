@@ -1,11 +1,11 @@
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == language) {
-        repeatLanguage = 2
+        repeatLanguage = 1
     }
 })
 let repeatLanguage = 0
 let language = 0
-language = randint(0, 2)
+language = randint(0, 5)
 repeatLanguage = 0
 radio.setGroup(1)
 radio.setTransmitPower(7)
@@ -19,7 +19,7 @@ loops.everyInterval(1000, function () {
     } else {
         pins.analogWritePin(AnalogPin.P13, 1023)
         pins.analogWritePin(AnalogPin.P14, 0)
-        language = randint(0, 2)
+        language = randint(0, 5)
         repeatLanguage = 0
     }
     basic.showNumber(language)
