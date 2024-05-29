@@ -10,7 +10,12 @@ repeatLanguage = 0
 radio.setGroup(1)
 radio.setTransmitPower(7)
 radio.setFrequencyBand(0)
-loops.everyInterval(1000, function () {
+loops.everyInterval(800, function () {
+    if (randint(0, 2) == 0) {
+        repeatLanguage = 0
+    }
+})
+loops.everyInterval(700, function () {
     control.waitMicros(randint(1, 123))
     if (repeatLanguage > 0) {
         pins.analogWritePin(AnalogPin.P13, 0)
